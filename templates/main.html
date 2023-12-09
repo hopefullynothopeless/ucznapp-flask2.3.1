@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <title>Справочная система - главная</title>
+</head>
+<body>
+    <div class="header-links-list">
+        <div class="header-links-list-link">
+            <a href="{{ url_for('addentry')}}">
+                Добавить новую запись
+            </a>
+        </div>
+        <div class="header-links-list-link">
+            <a href="{{ url_for('get_me_out_of_here')}}">
+                Продолжить работу
+            </a>
+        </div>
+        <div class="header-links-list-link">
+            <a href="{{ url_for('notes')}}">
+                Заметки
+            </a>
+        </div>
+        <div id="dropdown-wrapper" class="header-links-list-link">
+            <a id="hover-link" href="#">
+                Литература
+            </a>
+            <div class="dropdown">
+                <a href="{{url_for('book1')}}" target=”_blank”>Linux_Книга_рецептов_2-е_изд.</a>
+                <a href="{{url_for('book2')}}" target=”_blank”>DevOpsbook</a>
+                <a href="{{url_for('book3')}}" target=”_blank”>Docker_на_практике</a>
+                <a href="{{url_for('book4')}}" target=”_blank”>Linux_Командная_строкa</a>
+                <a href="{{url_for('book5')}}" target=”_blank”>Python_для_сетевых_инженеров</a>
+                <a href="{{url_for('book6')}}" target=”_blank”>Python_и_DevOps_Ключ_к_автоматизации_Linux</a>
+                <a href="{{url_for('book7')}}" target=”_blank”>Unixtoolbox_rus</a>
+                <a href="{{url_for('book8')}}" target=”_blank”>Анализ_пакетов</a>
+                <a href="{{url_for('book9')}}" target=”_blank”>Восстановление_данных_Практическое_руководство_2_е_изд</a>
+                <a href="{{url_for('book10')}}" target=”_blank”>Компьютерные_сети_Принципы_технологии_протоколы</a>
+                <a href="{{url_for('book11')}}" target=”_blank”>Компьютерные_сети_Танненбаум_6_изд</a>
+            </div>
+        </div>
+        <div class="header-links-list-link">
+            <a href="{{ url_for('searchpage')}}">
+               Искать записи в базе данных
+            </a>
+        </div>
+    </div>
+    <div class="main-flex-container">
+    {% for each_entry in entries_list %}
+        {% if each_entry.entry_active %}
+            <div class="entry">
+                <a href="{{ url_for('get_entry', entry_id=each_entry.entry_id)}}">{{ each_entry.entry_id}}. - {{ each_entry.entry_title }}</a>
+            </div>
+        {% else %}
+            <div class="entry-inactive">
+                <a href="{{ url_for('get_entry', entry_id=each_entry.entry_id)}}">{{ each_entry.entry_id}}. - {{ each_entry.entry_title }}</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+<script src="{{url_for('static', filename='js/htmx.min.js')}}"></script>
+</html>

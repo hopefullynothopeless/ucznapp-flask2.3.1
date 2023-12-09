@@ -1,0 +1,17 @@
+{% for result in searchresults %}
+    {% if result.entry_active %}
+    <div class="entry">
+        <a href="{{ url_for('get_entry', entry_id=result.entry_id)}}">{{ result.entry_id}}. - {{ result.entry_title }}</a>
+    </div>
+    {% else %}
+    <div class="entry-inactive">
+        <a href="{{ url_for('get_entry', entry_id=result.entry_id)}}">{{ result.entry_id}}. - {{ result.entry_title }}</a>
+    </div>
+    {% endif %}
+<!-- <div class="result-entry">
+    <h3>{{result.entry_id}} - {{result.entry_title}}</h3>
+    {% filter markdown %}
+    {{result.entry_content}}
+    {% endfilter %}
+</div> -->
+{% endfor %}

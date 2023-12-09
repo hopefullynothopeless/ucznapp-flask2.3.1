@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/entry_page.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+    <title>Справочная система - статья</title>
+</head>
+<body>
+    <div class="header-links-list">
+        <div class="header-links-list-link">
+            <a href="{{ url_for('main')}}">
+                На главную
+            </a>
+        </div>
+        <div class="header-links-list-link">
+            <a href="{{ url_for('addentry')}}">
+                Добавить новую запись
+            </a>
+        </div>
+    </div>
+    <div class="entry">
+        <h2>{{entry.entry_title}}</h2>
+        <div class="entry-content-md">
+            {% filter markdown %}
+            {{entry.entry_content}}
+            {% endfilter %}
+        </div>
+        <div style="display:flex;">
+            {% if entry.entry_active %}
+            <form action="{{ url_for('modify_entry', entry_id=entry.entry_id)}}" method="post">
+                <button id="flag" type="submit">Отметить на удаление</button>
+            </form>
+            {% else %}
+            <form action="{{ url_for('delete_entry', entry_id=entry.entry_id)}}" method="post">
+                <button id="delete" type="submit">Удалить</button>
+            </form>
+            <form action="{{ url_for('untag_entry', entry_id=entry.entry_id)}}" method="post">
+                <button id="untag" type="submit">Отменить удаление</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

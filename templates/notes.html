@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notes.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+    <title>Справочная система - заметки</title>
+</head>
+<body>
+    <div class="header-links-list">
+        <div class="header-links-list-link">
+            <a href="{{ url_for('main')}}">
+                На главную
+            </a>
+        </div>
+        <div class="header-links-list-link" id="add">
+            <a href="#">
+                Добавить
+            </a>
+        </div>
+    </div>
+    <div class="notes-flex-wrapper">
+        {% for each_note in notes_list %}
+        <div class="note">
+            <p>{{ each_note.note_content }}</p>
+            <form action="{{ url_for('delete_note', note_id=each_note.note_id) }}" method="post">
+                <div class="category-wrapper">
+                    {% if each_note.note_important == True %}
+                    <div class="category" id="category-important">
+                        <p>Важная</p>
+                    </div>
+                    {% endif %}
+                    {% if each_note.note_not_important %}
+                    <div class="category" id="category-not-important">
+                        <p>Не горит</p>
+                    </div>
+                    {% endif %}
+                    <div class="category">
+                        <input id="delete" type="submit" value="Удалить">
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="flex-container">
+        <div class="form-wrapper">
+            <form action="{{ url_for('add_note') }}" method="post" id="add_note_form">
+                <h3>Содержание</h3>
+                <textarea name="note_content" id="note_content" cols="30" rows="10"></textarea>
+                <div style="display: flex;">
+                    <input type="checkbox" name="important" id="1">
+                    <label for="important">Важная</label>
+                    <input type="checkbox" name="not_important" id="2">
+                    <label for="not_important">Не горит</label>
+                </div>
+                <input type="submit" value="Добавить">
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{{url_for('static', filename='js/notes-form-show.js')}}"></script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_entry_page.css')}}">
+    <style>
+        body::before{
+            background-image: none;
+        }
+    </style>
+    <title>Справочная система - создание статьи</title>
+</head>
+<body>
+    <div class="header-links-list">
+        <div class="header-links-list-link">
+            <a href="{{ url_for('main')}}">
+                На главную
+            </a>
+        </div>
+    </div>
+    <div class="content-flex-div">
+        <div class="form-div">
+            <form id="flex-form" action="/add_entry" method="post">
+                <div class="form-elem">
+                    <h3>Название темы</h3>
+                    <input type="text" name="entry_title">
+                </div>
+                <div class="form-elem">
+                    <h3>Описание</h3>
+                    <textarea name="entry_content" id="area" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-elem">
+                    <button type="submit">Добавить запись</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@media (max-width: 900px){
+    body::before {
+        background-color: #e1e4e8;
+        background-image: none;
+    }
+    section, header{
+        margin-left: 1em;
+    }
+}

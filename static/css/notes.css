@@ -1,0 +1,137 @@
+.header-links-list-link>a {
+    display:block;
+    padding:0.5em;
+    text-decoration: none;
+    color:#e1e4e8;
+}
+
+.header-links-list-link>a:hover{
+    background-color: #435055;
+    color:#e1e4e8;
+    transition: ease-in-out 0.05s;
+}
+
+.header-links-list{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #27323a
+}
+
+.header-links-list-link{
+    padding: 0;
+}
+
+.flex-container{
+    position: absolute;
+    display: none;
+    top:25dvh;
+    left:75dvh;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.notes-flex-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 5;
+    padding: 10px;
+    margin:auto;
+    width:60dvh;
+}
+
+.note{
+    padding: 0.5em;
+    max-width:60dvh;
+    color:#435055;
+    word-wrap: break-word;
+    border-left: 2px solid #29a19c;
+    margin-bottom: 0.5em;
+}
+
+.category-wrapper{
+    display:flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    width:30dvh;
+}
+
+.category{
+    font-size:11px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    height: 100%;
+}
+
+#delete{
+    font-size: 11px;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#delete:hover{
+    background-color: darkred;
+    transition: 0.1s;
+}
+
+.category:first-child{
+    margin-right: 5px;
+}
+
+#category-important{
+    background-color: black;
+    color:white;
+}
+
+#category-not-important{
+    background-color:mediumseagreen;
+    color:white;
+}
+
+#delete{
+    background-color: crimson;
+    color: white;
+}
+
+#add_note_form{
+    border-radius:5px;
+    width:52dvh;
+    max-width: 70dvh;
+    padding: 1em;
+    background-color: #e1e4e8;
+}
+
+textarea{
+    width:50dvh;
+    max-width: 50dvh;
+    min-width: 50dvh;
+    height: 10dvh;
+    max-height: 10dvh;
+    min-height: 10dvh;
+    border:2px solid #435055;
+    border-radius: 5px;
+}
+
+input[type=submit]{
+    border: none;
+    padding: 16px 32px;
+    margin-top:1em;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    color:white;
+    background-color:#27323a;
+    border-radius: 5px;
+}
+
+input[type=submit]:hover{
+    background-color: #435055;
+    transition: 0.2s;
+}
